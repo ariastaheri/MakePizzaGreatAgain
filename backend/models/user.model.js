@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongooseUniqueValidator = require('mongoose-unique-validator');
 
 const Schema = mongoose.Schema;
 
@@ -10,21 +11,21 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3
     },
+    email: {type: String, required: true, unique: true},
     address: {
-        type: Object,
-        required: true,
-
+        street: {type: String, required: true},
+        city: {type: String, required: true},
+        country: {type: String, required: true},
+        postalCode: {type: String, required: true}
     },
-    favorites: {
-        type: Arrays,
-        required: false,
-        default: null
-    },
-    orders: {
-        type: Arrays,
-        required: false,
-        default: null
-    }
+    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
+    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}]
 }, {
     timestamps: true
 })
+
+userSchema.plugin(mongooseUniqueValidator);
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
