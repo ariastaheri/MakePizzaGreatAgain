@@ -19,7 +19,13 @@ const userSchema = new Schema({
         postalCode: {type: String, required: true}
     },
     favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
-    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}]
+    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}],
+    password: {
+        type: String,
+        required: true,
+        unique: true,
+        minlength: 6
+    },
 }, {
     timestamps: true
 })

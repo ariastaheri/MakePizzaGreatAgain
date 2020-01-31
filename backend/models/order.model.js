@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const mongooseUniqueValidator = require('mongoose-unique-validator');
-const PizzaModel = require('./pizza.model')
+
 
 const Schema = mongoose.Schema;
 
@@ -10,7 +10,7 @@ const orderSchema = new Schema({
     user: {type: Schema.Types.ObjectId, ref:'User'},
     state: String,
     items: {
-        pizzas: [PizzaModel],
+        pizzas: [{type: Schema.Types.ObjectId, ref: 'Pizza'}],
         sides: [{type: Schema.Types.ObjectId, ref: 'Side'}],
         drinks: [{type: Schema.Types.ObjectId, ref: 'Drink'}]
     }
