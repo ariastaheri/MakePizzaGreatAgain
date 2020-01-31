@@ -12,6 +12,11 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/user', userRouter);
+///app.use('/api/topping', toppingRouter);
+//app.use('/api/drink', drinkRouter);
+//app.use('/api/side', sideRouter);
+//app.use('/api/favorite', favoriteRouter);
+//app.use('/api/order', orderRouter);
 
 const uri = process.env.MONGODB_URI;
 

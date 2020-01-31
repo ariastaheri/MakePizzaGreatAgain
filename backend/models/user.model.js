@@ -18,8 +18,8 @@ const userSchema = new Schema({
         country: {type: String, required: true},
         postalCode: {type: String, required: true}
     },
-    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite'}],
-    orders: [{type: Schema.Types.ObjectId, ref: 'Order'}],
+    favorites: [{type: Schema.Types.ObjectId, ref: 'Favorite', default: null}],
+    orders: [{type: Schema.Types.ObjectId, ref: 'Order', default: null}],
     password: {
         type: String,
         required: true,
