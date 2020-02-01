@@ -2,6 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRouter = require('./backend/routes/userRoute');
+const toppingRouter = require('./backend/routes/toppingRoute');
+const drinkRouter = require('./backend/routes/drinkRoute');
+const sideRouter = require('./backend/routes/sideRoute.js');
+const favoriteRouter = require('./backend/routes/favoriteRoute');
+const orderRouter = require('./backend/routes/orderRoute');
 require('dotenv').config();
 
 
@@ -12,17 +17,17 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/user', userRouter);
-///app.use('/api/topping', toppingRouter);
-//app.use('/api/drink', drinkRouter);
-//app.use('/api/side', sideRouter);
-//app.use('/api/favorite', favoriteRouter);
-//app.use('/api/order', orderRouter);
+app.use('/api/topping', toppingRouter);
+app.use('/api/drink', drinkRouter);
+app.use('/api/side', sideRouter);
+app.use('/api/favorite', favoriteRouter);
+app.use('/api/order', orderRouter);
 
 const uri = process.env.MONGODB_URI;
 
 console.log("the server is :" + uri)
 
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false })
 
 const connection = mongoose.connection;
 

@@ -5,8 +5,7 @@ const Schema = mongoose.Schema;
 
 const favoriteSchema = new Schema({
     size: {type: String, required: true},
-    toppings: [{type: toppingSchema.name, required: true}], 
-    user: {type: Schema.Types.ObjectId, ref: 'User'}
+    toppings: [{type: String, required: true}], 
 })
 
 const Favorite = mongoose.model('Favorite', favoriteSchema);
